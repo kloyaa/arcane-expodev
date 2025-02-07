@@ -6,7 +6,7 @@ const PlaygroundLayout = (): JSX.Element => {
   return (
     <>
       <Stack>
-        <Stack.Screen name="token-generator" options={{ headerShown: false }} />
+        <Stack.Screen name="firebase-pushnotification" options={{ headerShown: false }} />
       </Stack>
 
       <StatusBar style="light" backgroundColor="#161622" />

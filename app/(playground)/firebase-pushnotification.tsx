@@ -42,8 +42,7 @@ const TokenGenerator = (): JSX.Element => {
       });
     }
 
-    const { status: existingStatus } =
-      await Notifications.getPermissionsAsync();
+    const { status: existingStatus } =  await Notifications.getPermissionsAsync();
     let finalStatus = existingStatus;
     if (existingStatus !== "granted") {
       const { status } = await Notifications.requestPermissionsAsync();
@@ -90,9 +89,7 @@ const TokenGenerator = (): JSX.Element => {
             body: remoteMessage.notification?.body,
             sound: "default",
             priority: "high",
-            badge: 1,
             vibrate: [100, 50, 100],
-            launchImageName: "default",
           },
           trigger: null, // Immediate trigger
         });
