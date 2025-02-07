@@ -42,7 +42,7 @@ export default function App(): JSX.Element {
               containerStyles={styles.customButtonSignInContainerStyles}
               textStyles={styles.customButtonSignInTextStyles}
               handlePress={() => {
-                router.push("/sign-in");
+                router.push("/token-generator");
               }}
             />
             <CustomButton

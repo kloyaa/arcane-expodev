@@ -14,14 +14,17 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "googleServicesFile": "./firebase/GoogleService-Info.plist",
+      "bundleIdentifier": "MY_BUNDLE_ID"
     },
     "android": {
+      "googleServicesFile": "./firebase/google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.blackstacks.expodemo"
+      "package": "com.haibeonline.app"
     },
     "web": {
       "favicon": "./assets/favicon.png",
