@@ -1,38 +1,44 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
-
-# dependencies
+# Node.js modules
 node_modules/
+
+# React Native bundler and metro cache
+*.log
+*.log.*
+react-native-cache/
+dist/
+
+# Build files
+ios/Pods/
+ios/build/
+android/.gradle/
+android/build/
+android/app/build/
 
 # Expo
 .expo/
-dist/
-web-build/
-expo-env.d.ts
+.expo-shared/
 
-# Native
-*.orig.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
+# Xcode & Android Studio specific files
+*.xcodeproj/
+*.xcworkspace/
+ios/*.xcuserstate
+ios/*.xcuserdata/
 
-# Metro
-.metro-health-check*
+# Android Studio specific files
+.gradle/
+.idea/
+*.iml
 
-# debug
-npm-debug.*
-yarn-debug.*
-yarn-error.*
+# Firebase & Google services files
+google-services.json
+GoogleService-Info.plist
 
-# macOS
+# macOS system files
 .DS_Store
-*.pem
 
-# local env files
-.env*.local
+# Coverage reports
+coverage/
 
-# typescript
-*.tsbuildinfo
-firebase/*
-android
+# Any sensitive files
+.env
+.env.local

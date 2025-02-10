@@ -2,7 +2,9 @@
   "expo": {
     "name": "expo-demo",
     "slug": "expo-demo",
-    "scheme": ["expodemo"],
+    "scheme": [
+      "expodemo"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -16,7 +18,7 @@
     "ios": {
       "supportsTablet": true,
       "googleServicesFile": "./firebase/GoogleService-Info.plist",
-      "bundleIdentifier": "MY_BUNDLE_ID"
+      "bundleIdentifier": "com.haibeonline.app"
     },
     "android": {
       "googleServicesFile": "./firebase/google-services.json",
