@@ -1,15 +1,23 @@
-import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
-import React, { forwardRef, useEffect, useRef, useState } from "react";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
+import React, { forwardRef, useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+import { images } from "../../../constants";
 import CustomButton from "@/components/custom-buttom";
 import {
   CustomObscuredInputProps,
   FormFieldProps,
   ISignUpFormState,
 } from "@/interfaces/form.interface";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { CustomInput, CustomObscuredInput } from "@/components/form-field";
-import { router } from "expo-router";
 import IconButton from "@/components/icon-button";
 import useEnrollmentStore from "@/store/enrollment.store";
 
@@ -26,93 +34,83 @@ const CustomObscuredInputForwardRef = forwardRef<
 CustomInputForwardRef.displayName = "CustomInputForwardRef";
 CustomObscuredInputForwardRef.displayName = "CustomObscuredInputForwardRef";
 
-const SignUp = (): JSX.Element => {
+const SignUpPassword = (): JSX.Element => {
   const usernameRef = useRef<TextInput>(null);
-  const emailRef = useRef<TextInput>(null);
-
-  // Store
-  const { credentials, setCredentials, getCredentials } = useEnrollmentStore();
+  const passwordRef = useRef<TextInput>(null);
+  const confirmPasswordRef = useRef<TextInput>(null);
 
   const [form, setForm] = useState<ISignUpFormState>({
-    email: "",
-    username: "",
+    password: "",
+    confirmPassword: "",
+    isSubmitting: false,
   });
 
+  const { credentials, setCredentials } = useEnrollmentStore();
+
   const submit = (): void => {
-    const email = form.email?.trim();
-    const username = form.username?.trim();
-    if (email === "") {
-      return emailRef.current?.focus();
+    const password = form.password?.trim();
+    const confirmPassword = form.confirmPassword?.trim();
+    if (password === "") {
+      return passwordRef.current?.focus();
     }
 
-    if (username === "") {
-      return usernameRef.current?.focus();
+    if (confirmPassword === "") {
+      return confirmPasswordRef.current?.focus();
+    }
+
+    if (password !== confirmPassword) {
+      return confirmPasswordRef.current?.focus();
     }
 
     setCredentials({
       ...credentials,
-      email,
-      username,
-    });
+      password,
+    })
 
-    router.push("/sign-up-steps/password");
+    router.push("/sign-up-steps/otp");
   };
-
-  const retrievePreviousInputs = () => {
-    const previousInputs = getCredentials();
-
-    if(previousInputs) {
-      setForm({
-        ...form,
-        email: previousInputs.email || "",
-        username: previousInputs.username || ""
-      });
-    }
-  };
-
-  useEffect(() => {
-    retrievePreviousInputs();
-  }, []);
 
   return (
     <SafeAreaView className="bg-primary h-full">
       <ScrollView contentContainerStyle={styles.contentContainerStyle}>
         <View className="w-full flex justify-between items-start h-full px-4 py-5">
-          <View className="flex justify-start items-start w-full mt-[10px]">
-            <View className="flex-row gap-5 justify-start w-full  mb-5">
-              <IconButton
-                name="arrow-back-outline"
-                className="mb-5"
-                onPress={() => {
-                  router.back();
-                }}
-              />
-              <Text className="text-gray-400 font-pregular text-2xl text-center">
-                Sign Up
-              </Text>
-            </View>
-            <View className="w-full mt-[30px]">
-              <CustomInputForwardRef
-                ref={emailRef}
-                title="Email"
-                value={form.email || ""}
-                placeholder="Enter your Email"
-                changeText={(e: string) => {
+          <View className="flex justify-start items-start w-full">
+            <View className="w-full mt-[10px]">
+              <View className="flex-row gap-5 justify-start w-full mb-5">
+                <IconButton
+                  name="arrow-back-outline"
+                  className="mb-5"
+                  onPress={() => {
+                    router.back();
+                  }}
+                />
+                <Text className="text-gray-400 font-pregular text-2xl text-center">
+                  Sign Up
+                </Text>
+              </View>
+              <CustomObscuredInputForwardRef
+                ref={passwordRef}
+                title="Password"
+                value={form.password || ""}
+                placeholder="Enter your password"
+                allowToggle={true}
+                onChangeText={(e) => {
                   setForm({
                     ...form,
-                    email: e,
+                    password: e,
                   });
                 }}
               />
-              <CustomInputForwardRef
-                ref={usernameRef}
-                title="Username"
-                value={form.username || ""}
-                placeholder="Enter your Username"
-                changeText={(e: string) => {
+
+              <CustomObscuredInputForwardRef
+                ref={confirmPasswordRef}
+                title="Confirm"
+                value={form.confirmPassword || ""}
+                placeholder="Confirm your password"
+                onChangeText={(e) => {
                   setForm({
                     ...form,
-                    username: e,
+                    confirmPassword: e,
                   });
                 }}
               />
@@ -121,7 +119,7 @@ const SignUp = (): JSX.Element => {
 
           <View className="w-full">
             <CustomButton
-              title={"Continue"}
+              title={"Create Account"}
               containerStyles={styles.customButtonSignInContainerStyles}
               textStyles={styles.customButtonSignInTextStyles}
               handlePress={submit}
@@ -140,7 +138,7 @@ const SignUp = (): JSX.Element => {
   );
 };
 
-export default SignUp;
+export default SignUpPassword;
 
 const styles = StyleSheet.create({
   contentContainerStyle: {

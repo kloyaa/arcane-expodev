@@ -12,10 +12,11 @@ export interface IFormState {
 }
 
 export interface ISignUpFormState {
-  username: string;
-  password: string;
-  confirmPassword: string;
-  isSubmitting: boolean;
+  email?: string;
+  username?: string;
+  password?: string;
+  confirmPassword?: string;
+  isSubmitting?: boolean;
 }
 
 export interface FormFieldProps {

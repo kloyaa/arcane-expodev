@@ -7,7 +7,9 @@ const AuthLayout = (): JSX.Element => {
     <>
       <Stack>
         <Stack.Screen name="sign-in" options={{ headerShown: false }} />
-        {/* <Stack.Screen name="sign-up" options={{ headerShown: false }} /> */}
+        <Stack.Screen name="sign-up" options={{ headerShown: false }} />
+        <Stack.Screen name="sign-up-steps/password" options={{ headerShown: false }} />
+        <Stack.Screen name="sign-up-steps/otp" options={{ headerShown: false }} />
       </Stack>
 
       <StatusBar style="light" backgroundColor="#161622" />

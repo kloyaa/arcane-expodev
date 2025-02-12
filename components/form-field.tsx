@@ -46,7 +46,6 @@ const CustomObscuredInput = forwardRef<TextInput, CustomObscuredInputProps>(
           <TextInput
             ref={ref} // Correct ref forwarding
             style={[styles.input, props.inputStyles]}
-            keyboardType="visible-password"
             secureTextEntry={!toggle}
             value={props.value}
             placeholder={props.placeholder}
@@ -56,7 +55,10 @@ const CustomObscuredInput = forwardRef<TextInput, CustomObscuredInputProps>(
           />
           {props.allowToggle && (
             <TouchableOpacity
-              onPress={() => setToggle(!toggle)}
+              onPress={() => {
+                setToggle(!toggle);
+                console.log(toggle)
+              }}
               style={styles.icon}
             >
               <Ionicons
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: "#ddd",
-    fontSize: 14,
+    fontSize: 12,
     marginBottom: 6,
   },
 });
