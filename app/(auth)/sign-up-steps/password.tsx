@@ -19,7 +19,7 @@ import {
 import { Link, router } from "expo-router";
 import { CustomInput, CustomObscuredInput } from "@/components/form-field";
 import IconButton from "@/components/icon-button";
-import useEnrollmentStore from "@/store/enrollment.store";
+import useAuthStore from "@/store/auth.store";
 
 const CustomInputForwardRef = forwardRef<
   TextInput,
@@ -45,7 +45,7 @@ const SignUpPassword = (): JSX.Element => {
     isSubmitting: false,
   });
 
-  const { credentials, setCredentials } = useEnrollmentStore();
+  const { state, setState } = useAuthStore();
 
   const submit = (): void => {
     const password = form.password?.trim();
@@ -62,8 +62,8 @@ const SignUpPassword = (): JSX.Element => {
       return confirmPasswordRef.current?.focus();
     }
 
-    setCredentials({
-      ...credentials,
+    setState({
+      ...state,
       password,
     })
 

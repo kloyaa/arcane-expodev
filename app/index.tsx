@@ -38,7 +38,7 @@ export default function App(): JSX.Element {
 
           <View className="w-full flex justify-center items-center">
             <CustomButton
-              title={"Get started"}
+              title={"Sign in"}
               containerStyles={styles.customButtonSignInContainerStyles}
               textStyles={styles.customButtonSignInTextStyles}
               handlePress={() => {

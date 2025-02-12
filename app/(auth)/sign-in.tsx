@@ -14,6 +14,7 @@ import CustomButton from "@/components/custom-buttom";
 import { FormFieldProps, IFormState } from "@/interfaces/form.interface";
 import { Link } from "expo-router";
 import { CustomInput } from "@/components/form-field";
+import useAuthStore from "@/store/auth.store";
 
 const FormFieldForwardRef = forwardRef<TextInput, Omit<FormFieldProps, "ref">>(
   (props, ref) => <CustomInput ref={ref} {...props} />
@@ -31,16 +32,28 @@ const SignIn = (): JSX.Element => {
     isSubmitting: false,
   });
 
-  const submit = (): void => {
-    if (form.username.trim() === "") {
+  const { login, error } = useAuthStore();
+
+  const submit = async (): Promise<void> => {
+    const identifier = form.username.trim();
+    const password = form.password.trim();
+
+    if (identifier === "") {
       return usernameRef.current?.focus();
     }
 
-    if (form.password.trim() === "") {
+    if (password === "") {
       return passwordRef.current?.focus();
     }
 
-    console.log(form);
+    const response = await login({
+      identifier,
+      password,
+    });
+
+    if(!response) {
+      return usernameRef.current?.focus();
+    }
   };
 
   return (
@@ -87,6 +100,8 @@ const SignIn = (): JSX.Element => {
                 }}
               />
             </View>
+
+            {error && <Text className="text-red-400 text-[12px]">{error}</Text>}
           </View>
 
           <View className="w-full">

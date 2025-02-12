@@ -1,17 +1,16 @@
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import useEnrollmentStore from "@/store/enrollment.store";
 import OTPInput from "@/components/otp";
+import useAuthStore from "@/store/auth.store";
 
 const otp = () => {
-  const { clearCredenials, enroll } = useEnrollmentStore();
+  const { clearCredenials, registration } = useAuthStore();
 
   const handleOTPSubmit = async (otp: string) => {
     console.log("Entered OTP:", otp);
 
     try {
-      await enroll();
+      await registration();
 
       // Clear credentials if enrollment is successful
       clearCredenials();
@@ -24,10 +23,6 @@ const otp = () => {
   const handleResendOTP = () => {
     console.log("Resend OTP triggered");
     // Call API to resend OTP
-  };
-
-  const handleEnroll = async () => {
-    await enroll();
   };
 
   return (
