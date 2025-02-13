@@ -1,7 +1,8 @@
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import OTPInput from "@/components/otp";
 import useAuthStore from "@/store/auth.store";
+import SafeArea from "@/components/safearea";
+import { View } from "react-native";
 
 const otp = () => {
   const { clearCredenials, registration } = useAuthStore();
@@ -26,9 +27,17 @@ const otp = () => {
   };
 
   return (
-    <SafeAreaView className="bg-primary h-full">
-      <OTPInput onSubmit={handleOTPSubmit} onResend={handleResendOTP} />
-    </SafeAreaView>
+    <SafeArea props={{ className: "h-full bg-white dark:bg-gray-800" }}>
+      <View className="flex flex-col justify-center items-center mt-[25vh]">
+        <OTPInput
+          inputClassName="w-12 h-12 border-[0.5px] text-black dark:text-white dark:border-secondary-dark text-center text-lg rounded-md dark:focus:border-secondary"
+          labelClassName="text-lg font-pbold dark:text-white mb-6 text-[22px]"
+          timerClassName="text-black dark:text-secondary-dark mt-14"
+          otpLength={6}
+          onSubmit={handleOTPSubmit}
+          onResend={handleResendOTP} />
+      </View>
+    </SafeArea>
   );
 };
 

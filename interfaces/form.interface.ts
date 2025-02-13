@@ -26,7 +26,8 @@ export interface FormFieldProps {
   changeText: (text: string) => void; // Function to handle text changes
   keyboardType?: KeyboardTypeOptions; // Keyboard type (optional)
   containerStyles?: ViewStyle; // Custom styles for the container (optional)
-  inputStyles?: TextStyle; // Custom styles for the input (optional)
+  labelClassName?: string;
+  inputClassName?: string; // Custom styles for the input (optional)
   ref?: React.LegacyRef<TextInput> | undefined;
   options?: {
     isObscure: boolean;
@@ -40,6 +41,7 @@ export interface CustomObscuredInputProps {
   placeholder: string;
   onChangeText: (text: string) => void;
   containerStyles?: ViewStyle;
-  inputStyles?: TextStyle;
+  labelClassName?: string;
+  inputClassName?: string; // Custom styles for the input (optional)
   allowToggle?: boolean;
 }

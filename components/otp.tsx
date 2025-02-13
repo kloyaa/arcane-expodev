@@ -6,13 +6,19 @@ interface OTPInputProps {
   onSubmit: (otp: string) => void;
   onResend?: () => void;
   title?: string;
+  inputClassName?: string;
+  labelClassName?: string;
+  timerClassName?: string
 }
 
-const OTPInput: React.FC<OTPInputProps> = ({ 
-  otpLength = 6, 
-  onSubmit, 
-  onResend, 
-  title = "Enter OTP"
+const OTPInput: React.FC<OTPInputProps> = ({
+  otpLength = 6,
+  onSubmit,
+  onResend,
+  title = "Enter OTP",
+  inputClassName,
+  labelClassName,
+  timerClassName
 }) => {
   const [otp, setOtp] = useState<string[]>(new Array(otpLength).fill(""));
   const [timer, setTimer] = useState(30);
@@ -67,13 +73,13 @@ const OTPInput: React.FC<OTPInputProps> = ({
 
   return (
     <View className="flex items-center justify-center p-5">
-      <Text className="text-xl font-bold text-gray-900 mb-3">{title}</Text>
+      <Text className={labelClassName}>{title}</Text>
       <View className="flex-row mb-5 gap-3">
         {otp.map((_, index) => (
           <TextInput
             key={index}
             ref={(ref) => (inputs.current[index] = ref!)}
-            className="w-10 h-12 border-2 border-gray-400 border-s text-center text-lg rounded-md focus:border-blue-500"
+            className={inputClassName}
             keyboardType="number-pad"
             maxLength={1}
             value={otp[index]}
@@ -88,7 +94,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
         onPress={handleResend}
         disabled={timer > 0}
       >
-        <Text className={`text-blue-600 ${timer > 0 ? "opacity-50" : "opacity-100"}`}>
+        <Text className={`${timerClassName} ${timer > 0 ? "opacity-30" : "opacity-100"}`}>
           {timer > 0 ? `Resend in ${timer}s` : "Resend OTP"}
         </Text>
       </TouchableOpacity>

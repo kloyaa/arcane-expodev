@@ -18,11 +18,11 @@ const CustomInput = forwardRef<TextInput, FormFieldProps>((props, ref) => {
   // Correct type definition
   return (
     <View style={[styles.container, props.containerStyles]}>
-      <Text style={styles.title}>{props.title}</Text>
+      <Text className={props.labelClassName}>{props.title}</Text>
       <View style={styles.inputContainer}>
         <TextInput
           ref={ref} // Correct ref forwarding
-          style={[styles.input, props.inputStyles]}
+          className={props.inputClassName}
           value={props.value}
           placeholder={props.placeholder}
           placeholderTextColor="#7F7F7F"
@@ -41,11 +41,12 @@ const CustomObscuredInput = forwardRef<TextInput, CustomObscuredInputProps>(
 
     return (
       <View style={[styles.container, props.containerStyles]}>
-        <Text style={styles.title}>{props.title}</Text>
+        <Text className={props.labelClassName}>{props.title}</Text>
         <View style={styles.inputContainer}>
           <TextInput
             ref={ref} // Correct ref forwarding
-            style={[styles.input, props.inputStyles]}
+            style={[styles.input]}
+            className={props.inputClassName}
             secureTextEntry={!toggle}
             value={props.value}
             placeholder={props.placeholder}
@@ -85,7 +86,6 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   input: {
-    color: "#fff",
     flex: 1,
   },
   inputContainer: {

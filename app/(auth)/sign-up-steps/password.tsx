@@ -20,6 +20,7 @@ import { Link, router } from "expo-router";
 import { CustomInput, CustomObscuredInput } from "@/components/form-field";
 import IconButton from "@/components/icon-button";
 import useAuthStore from "@/store/auth.store";
+import SafeArea from "@/components/safearea";
 
 const CustomInputForwardRef = forwardRef<
   TextInput,
@@ -71,7 +72,7 @@ const SignUpPassword = (): JSX.Element => {
   };
 
   return (
-    <SafeAreaView className="bg-primary h-full">
+    <SafeArea>
       <ScrollView contentContainerStyle={styles.contentContainerStyle}>
         <View className="w-full flex justify-between items-start h-full px-4 py-5">
           <View className="flex justify-start items-start w-full">
@@ -93,6 +94,8 @@ const SignUpPassword = (): JSX.Element => {
                 title="Password"
                 value={form.password || ""}
                 placeholder="Enter your password"
+                labelClassName="text-black dark:text-white mb-3 text-[12px]"
+                inputClassName="text-black dark:text-white"
                 allowToggle={true}
                 onChangeText={(e) => {
                   setForm({
@@ -107,6 +110,8 @@ const SignUpPassword = (): JSX.Element => {
                 title="Confirm"
                 value={form.confirmPassword || ""}
                 placeholder="Confirm your password"
+                labelClassName="text-black dark:text-white mb-3 text-[12px]"
+                inputClassName="text-black dark:text-white"
                 onChangeText={(e) => {
                   setForm({
                     ...form,
@@ -121,20 +126,20 @@ const SignUpPassword = (): JSX.Element => {
             <CustomButton
               title={"Create Account"}
               containerStyles={styles.customButtonSignInContainerStyles}
-              textStyles={styles.customButtonSignInTextStyles}
+              // textStyles={styles.customButtonSignInTextStyles}
               handlePress={submit}
               isLoading={form.isSubmitting}
             />
             <Link href="/sign-in" className="mt-7">
-              <Text className="text-[12px] font-pregular text-gray-100 mt-7 text-center">
+              <Text className="text-black dark:text-white text-[12px] font-pregular mt-7 text-center">
                 Already have an account?{" "}
-                <Text className="text-secondary font-psemibold">Sign in</Text>
+                <Text className="text-secondary-dark dark:text-secondary font-psemibold">Sign in</Text>
               </Text>
             </Link>
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </SafeArea>
   );
 };
 

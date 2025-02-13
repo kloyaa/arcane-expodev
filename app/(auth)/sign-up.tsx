@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { ScrollView, StyleSheet, TextInput, View } from "react-native";
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "@/components/custom-buttom";
@@ -12,6 +12,8 @@ import { CustomInput, CustomObscuredInput } from "@/components/form-field";
 import { router } from "expo-router";
 import IconButton from "@/components/icon-button";
 import useAuthStore from "@/store/auth.store";
+import SafeArea from "@/components/safearea";
+import Text from "@/components/text";
 
 const CustomInputForwardRef = forwardRef<
   TextInput,
@@ -61,7 +63,7 @@ const SignUp = (): JSX.Element => {
   const retrievePreviousInputs = () => {
     const previousInputs = getState();
 
-    if(previousInputs) {
+    if (previousInputs) {
       setForm({
         ...form,
         email: previousInputs.email || "",
@@ -75,7 +77,7 @@ const SignUp = (): JSX.Element => {
   }, []);
 
   return (
-    <SafeAreaView className="bg-primary h-full">
+    <SafeArea>
       <ScrollView contentContainerStyle={styles.contentContainerStyle}>
         <View className="w-full flex justify-between items-start h-full px-4 py-5">
           <View className="flex justify-start items-start w-full mt-[10px]">
@@ -87,7 +89,7 @@ const SignUp = (): JSX.Element => {
                   router.back();
                 }}
               />
-              <Text className="text-gray-400 font-pregular text-2xl text-center">
+              <Text className="text-black dark:text-white font-pregular text-2xl text-center">
                 Sign Up
               </Text>
             </View>
@@ -97,6 +99,8 @@ const SignUp = (): JSX.Element => {
                 title="Email"
                 value={form.email || ""}
                 placeholder="Enter your Email"
+                labelClassName="text-black dark:text-white mb-3 text-[12px]"
+                inputClassName="text-black dark:text-white"
                 changeText={(e: string) => {
                   setForm({
                     ...form,
@@ -109,6 +113,8 @@ const SignUp = (): JSX.Element => {
                 title="Username"
                 value={form.username || ""}
                 placeholder="Enter your Username"
+                labelClassName="text-black dark:text-white mb-3 text-[12px]"
+                inputClassName="text-black dark:text-white"
                 changeText={(e: string) => {
                   setForm({
                     ...form,
@@ -123,20 +129,19 @@ const SignUp = (): JSX.Element => {
             <CustomButton
               title={"Continue"}
               containerStyles={styles.customButtonSignInContainerStyles}
-              textStyles={styles.customButtonSignInTextStyles}
               handlePress={submit}
               isLoading={form.isSubmitting}
             />
             <Link href="/sign-in" className="mt-7">
-              <Text className="text-[12px] font-pregular text-gray-100 mt-7 text-center">
+              <Text className="text-black dark:text-white text-[12px] font-pregular mt-7 text-center">
                 Already have an account?{" "}
-                <Text className="text-secondary font-psemibold">Sign in</Text>
+                <Text className="text-secondary-dark dark:text-secondary font-psemibold">Sign in</Text>
               </Text>
             </Link>
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </SafeArea >
   );
 };
 

@@ -46,6 +46,8 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - ExpoSystemUI (4.0.8):
+    - ExpoModulesCore
   - FBLazyVector (0.76.7)
   - Firebase/Analytics (11.7.0):
     - Firebase/Core
@@ -1820,6 +1822,7 @@ DEPENDENCIES:
   - ExpoKeepAwake (from `../node_modules/expo-keep-awake/ios`)
   - ExpoLinking (from `../node_modules/expo-linking/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core`)
+  - ExpoSystemUI (from `../node_modules/expo-system-ui/ios`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - Firebase/Analytics
   - Firebase/Core
@@ -1939,6 +1942,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-linking/ios"
   ExpoModulesCore:
     :path: "../node_modules/expo-modules-core"
+  ExpoSystemUI:
+    :path: "../node_modules/expo-system-ui/ios"
   FBLazyVector:
     :path: "../node_modules/react-native/Libraries/FBLazyVector"
   fmt:
@@ -2092,6 +2097,7 @@ SPEC CHECKSUMS:
   ExpoKeepAwake: 62ff49bbc3bff90d8ee28329190f9ba371bf88e7
   ExpoLinking: 8d12bee174ba0cdf31239706578e29e74a417402
   ExpoModulesCore: f770beb9cabb6262c446364d42f21370ee5c275d
+  ExpoSystemUI: 2e5356d22b077c56c132b4dcbc5d69dd667b1f8c
   FBLazyVector: ca8044c9df513671c85167838b4188791b6f37e1
   Firebase: a64bf6a8546e6eab54f1c715cd6151f39d2329f4
   FirebaseAnalytics: bc9e565af9044ba8d6c6e4157e4edca8e5fdf7ec

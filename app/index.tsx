@@ -1,64 +1,69 @@
-import { View, ScrollView, Image, Text, StyleSheet } from "react-native";
+import { View, ScrollView, Image, Text, StyleSheet, Appearance } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
-import { images } from '../constants';
+import { useColorScheme } from "nativewind";
 
 import { router } from "expo-router";
 import CustomButton from "@/components/custom-buttom";
+// import { useTheme } from "@/context/themeContext";
+import ThemeToggle from "@/components/ThemeToggle";
+import { useEffect, useState } from "react";
+import SafeArea from "@/components/safearea";
 
 export default function App(): JSX.Element {
+  const { setColorScheme, colorScheme: systemColorScheme } = useColorScheme();
+  const [isDarkMode, setIsDarkMode] = useState(systemColorScheme === 'dark' || false); // Initialize with system or default
+
+  useEffect(() => {
+    setColorScheme(isDarkMode ? 'dark' : 'light');
+  }, [isDarkMode, setColorScheme]);
+
+  const handleThemeToggle = () => {
+    setIsDarkMode(prevMode => !prevMode); // Simple toggle
+  };
+
   return (
-    <SafeAreaView className="bg-primary h-full">
+    <SafeArea>
       <ScrollView
         contentContainerStyle={styles.scrollViewContentContainerStyle}
       >
-        <View className="w-full flex justify-between items-center h-full px-4 py-5">
-          <View className="flex justify-center items-center w-full">
-            <Image
-              source={images.arcaneLogo}
-              className="w-[130px] h-[84px]"
-              resizeMode="contain"
-            />
-            <Image
-              source={images.cards}
-              className="max-w-[380px] w-full h-[298px]"
-              resizeMode="contain"
-            />
+        <View className="w-full flex-row justify-end">
+          <ThemeToggle onToggle={handleThemeToggle} isDarkMode={isDarkMode} />
+        </View>
 
-            <View className="relative mt-5">
-              <Text className="text-white font-pbold text-3xl text-center">
-                Discover Endless Possibilities with our new{" "}
-                <Text className="text-secondary">Hextech</Text>
-              </Text>
-            </View>
-            <Text className="text-[12px] font-pregular text-gray-100 mt-7 text-center">
+        <View className="w-full flex-col justify-between h-[80vh]">
+          <View>
+            <Text className="font-pbold text-7xl text-black dark:text-white">
+              Discover Endless Possibilities with our new
+              <Text className="text-secondary">{" "}Hextech</Text>
+            </Text>
+            <Text className="text-3xl font-pregular  text-black dark:text-white">
               Where necessity is the mother of innovation
             </Text>
           </View>
 
-          <View className="w-full flex justify-center items-center">
+          <View className="w-full">
             <CustomButton
               title={"Sign in"}
               containerStyles={styles.customButtonSignInContainerStyles}
-              textStyles={styles.customButtonSignInTextStyles}
+              textClassName="text-black dark:text-orange-50"
               handlePress={() => {
                 router.push("/sign-in");
               }}
             />
             <CustomButton
               title={"Don't have an account?"}
-              textStyles={styles.customButtonSignUpTextStyles}
               containerStyles={styles.customButtonSignUpContainerStyles}
+              textClassName="text-black dark:text-white"
               handlePress={() => {
                 router.push("/sign-up");
               }}
             />
           </View>
         </View>
-      </ScrollView>
-
+      </ScrollView >
       <StatusBar backgroundColor="#161622" style="light" />
-    </SafeAreaView>
+    </SafeArea >
   );
 }
 

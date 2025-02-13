@@ -1,18 +1,17 @@
 import {
   StyleSheet,
-  Text,
   TouchableOpacity,
   ViewStyle,
-  TextStyle,
   ActivityIndicator,
 } from 'react-native';
 import React from 'react';
+import Text from './text';
 
 // Define the props interface
 interface CustomButtonProps {
   title: string; // Title is required and must be a string
   containerStyles?: ViewStyle; // Optional custom styles for the container
-  textStyles?: TextStyle; // Optional custom styles for the text
+  textClassName?: string; // Optional custom styles for the text
   disabled?: boolean; // Optional disabled state
   isLoading?: boolean;
   handlePress?: () => void;
@@ -21,7 +20,7 @@ interface CustomButtonProps {
 const CustomButton: React.FC<CustomButtonProps> = ({
   title,
   containerStyles,
-  textStyles,
+  textClassName,
   disabled,
   isLoading,
   handlePress,
@@ -38,11 +37,11 @@ const CustomButton: React.FC<CustomButtonProps> = ({
       onPress={handlePress}
       disabled={disabled || isLoading} // Disable button when loading
     >
-      <Text style={[styles.buttonText, textStyles]}>
+      <Text className={textClassName} >
         {isLoading ? (
           <ActivityIndicator color="#161622" /> // Show spinner when loading
         ) : (
-          <Text style={[styles.buttonText, textStyles]}>{title}</Text>
+          <Text className={textClassName}>{title}</Text>
         )}
       </Text>
     </TouchableOpacity>

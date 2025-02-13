@@ -2,7 +2,6 @@ import {
   Image,
   ScrollView,
   StyleSheet,
-  Text,
   TextInput,
   View,
 } from "react-native";
@@ -15,6 +14,8 @@ import { FormFieldProps, IFormState } from "@/interfaces/form.interface";
 import { Link } from "expo-router";
 import { CustomInput } from "@/components/form-field";
 import useAuthStore from "@/store/auth.store";
+import SafeArea from "@/components/safearea";
+import Text from "@/components/text";
 
 const FormFieldForwardRef = forwardRef<TextInput, Omit<FormFieldProps, "ref">>(
   (props, ref) => <CustomInput ref={ref} {...props} />
@@ -51,23 +52,18 @@ const SignIn = (): JSX.Element => {
       password,
     });
 
-    if(!response) {
+    if (!response) {
       return usernameRef.current?.focus();
     }
   };
 
   return (
-    <SafeAreaView className="bg-primary h-full">
+    <SafeArea>
       <ScrollView contentContainerStyle={styles.contentContainerStyle}>
         <View className="w-full flex justify-between items-start h-full px-4 py-5">
           <View className="flex justify-start items-start w-full">
-            <Image
-              source={images.arcaneLogo}
-              className="w-[155px] h-[50px] -left-3"
-              resizeMode="contain"
-            />
-            <Text className="text-white font-plight text-[16px] text-center">
-              Login to your <Text className="text-secondary">Hextech</Text>{" "}
+            <Text className="text-black dark:text-white text-[24px] text-left font-pregular">
+              Login with your <Text className="text-secondary font-psemibold">Hextech</Text>{" "}
               account
             </Text>
             <View className="w-full mt-[30px]">
@@ -76,6 +72,8 @@ const SignIn = (): JSX.Element => {
                 title="Email"
                 value={form.username}
                 placeholder="Enter your Username or Email"
+                labelClassName="text-black dark:text-white mb-3 text-[12px]"
+                inputClassName="text-black dark:text-white"
                 changeText={(e: string) => {
                   setForm({
                     ...form,
@@ -88,6 +86,8 @@ const SignIn = (): JSX.Element => {
                 title="Password"
                 value={form.password}
                 placeholder="Enter your password"
+                labelClassName="text-black dark:text-white mb-3 text-[12px]"
+                inputClassName="text-black dark:text-white"
                 changeText={(e) => {
                   setForm({
                     ...form,
@@ -108,20 +108,19 @@ const SignIn = (): JSX.Element => {
             <CustomButton
               title={"Sign in"}
               containerStyles={styles.customButtonSignInContainerStyles}
-              textStyles={styles.customButtonSignInTextStyles}
               handlePress={submit}
               isLoading={form.isSubmitting}
             />
             <Link href="/sign-up" className="mt-7">
-              <Text className="text-[12px] font-pregular text-gray-100 mt-7 text-center">
+              <Text className="text-black dark:text-white text-[12px] font-pregular mt-7 text-center">
                 Don&apos;t have an account?{" "}
-                <Text className="text-secondary font-psemibold">Sign up</Text>
+                <Text className="text-secondary-dark dark:text-secondary font-psemibold ">Sign up</Text>
               </Text>
             </Link>
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </SafeArea>
   );
 };
 

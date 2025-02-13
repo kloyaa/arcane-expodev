@@ -1,26 +1,41 @@
 module.exports = {
   content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: "#161622",
-          100: "#2c2c42",
+        background: {
+          DEFAULT: "#FFFFFF", // Light mode background
+          dark: "#161622",    // Dark mode background
+        },
+        text: {
+          DEFAULT: "#161622", // Light mode text
+          dark: "#111",    // Dark mode text
         },
         secondary: {
           DEFAULT: "#FF9C01",
-          100: "#FF9001",
-          200: "#FF8E01",
-        },
-        black: {
-          DEFAULT: "#000",
-          100: "#1E1E2D",
-          200: "#232533",
-        },
-        gray: {
-          100: "#CDCDE0",
+          dark: "#FF8E01",
         },
       },
+      // colors: {
+      //   primary: {
+      //     DEFAULT: "#161622",
+      //     100: "#2c2c42",
+      //   },
+      //   secondary: {
+      //     DEFAULT: "#FF9C01",
+      //     100: "#FF9001",
+      //     200: "#FF8E01",
+      //   },
+      //   black: {
+      //     DEFAULT: "#000",
+      //     100: "#1E1E2D",
+      //     200: "#232533",
+      //   },
+      //   gray: {
+      //     100: "#CDCDE0",
+      //   },
+      // },
       fontFamily: {
         pthin: ["Poppins-Thin", "sans-serif"],
         pextralight: ["Poppins-ExtraLight", "sans-serif"],
