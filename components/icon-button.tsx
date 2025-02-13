@@ -13,14 +13,14 @@ interface IconButtonProps {
 const IconButton: React.FC<IconButtonProps> = ({
   name = 'ios-star', // Default placeholder icon
   size = 30,         // Default size
-  color = 'gray',    // Default color
-  onPress = () => {}, // Default no-op function
-  className 
+  color = '#FF9C01',    // Default color
+  onPress = () => { }, // Default no-op function
+  className
 }) => {
   return (
     <View>
       <TouchableOpacity onPress={onPress}>
-        <Ionicons name={name} size={size} color={color} className={className}/>
+        <Ionicons name={name} size={size} color={color} className={className} />
       </TouchableOpacity>
     </View>
   );

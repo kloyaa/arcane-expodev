@@ -95,7 +95,7 @@ const SignUpPassword = (): JSX.Element => {
                 value={form.password || ""}
                 placeholder="Enter your password"
                 labelClassName="text-black dark:text-white mb-3 text-[12px]"
-                inputClassName="text-black dark:text-white"
+                inputClassName="text-black dark:text-white  text-sm"
                 allowToggle={true}
                 onChangeText={(e) => {
                   setForm({
@@ -111,7 +111,7 @@ const SignUpPassword = (): JSX.Element => {
                 value={form.confirmPassword || ""}
                 placeholder="Confirm your password"
                 labelClassName="text-black dark:text-white mb-3 text-[12px]"
-                inputClassName="text-black dark:text-white"
+                inputClassName="text-black dark:text-white  text-sm"
                 onChangeText={(e) => {
                   setForm({
                     ...form,

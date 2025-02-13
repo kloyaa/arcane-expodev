@@ -6,13 +6,10 @@ import {
   View,
 } from "react-native";
 import React, { forwardRef, useRef, useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-
-import { images } from "../../constants";
 import CustomButton from "@/components/custom-buttom";
 import { FormFieldProps, IFormState } from "@/interfaces/form.interface";
 import { Link } from "expo-router";
-import { CustomInput } from "@/components/form-field";
+import { CustomInput, CustomObscuredInput } from "@/components/form-field";
 import useAuthStore from "@/store/auth.store";
 import SafeArea from "@/components/safearea";
 import Text from "@/components/text";
@@ -69,11 +66,11 @@ const SignIn = (): JSX.Element => {
             <View className="w-full mt-[30px]">
               <FormFieldForwardRef
                 ref={usernameRef}
-                title="Email"
+                title="Username"
                 value={form.username}
                 placeholder="Enter your Username or Email"
                 labelClassName="text-black dark:text-white mb-3 text-[12px]"
-                inputClassName="text-black dark:text-white"
+                inputClassName="text-black dark:text-white text-sm"
                 changeText={(e: string) => {
                   setForm({
                     ...form,
@@ -81,22 +78,18 @@ const SignIn = (): JSX.Element => {
                   });
                 }}
               />
-              <FormFieldForwardRef
+              <CustomObscuredInput
                 ref={passwordRef}
                 title="Password"
                 value={form.password}
                 placeholder="Enter your password"
                 labelClassName="text-black dark:text-white mb-3 text-[12px]"
-                inputClassName="text-black dark:text-white"
-                changeText={(e) => {
+                inputClassName="text-black dark:text-white text-sm"
+                onChangeText={(e) => {
                   setForm({
                     ...form,
                     password: e,
                   });
-                }}
-                options={{
-                  isObscure: true,
-                  allowToggle: true,
                 }}
               />
             </View>

@@ -25,7 +25,7 @@ const CustomInput = forwardRef<TextInput, FormFieldProps>((props, ref) => {
           className={props.inputClassName}
           value={props.value}
           placeholder={props.placeholder}
-          placeholderTextColor="#7F7F7F"
+          placeholderTextColor="#ccc"
           onChangeText={props.changeText}
           textContentType="none"
           autoCorrect={false}
@@ -45,12 +45,11 @@ const CustomObscuredInput = forwardRef<TextInput, CustomObscuredInputProps>(
         <View style={styles.inputContainer}>
           <TextInput
             ref={ref} // Correct ref forwarding
-            style={[styles.input]}
             className={props.inputClassName}
             secureTextEntry={!toggle}
             value={props.value}
             placeholder={props.placeholder}
-            placeholderTextColor="#7F7F7F"
+            placeholderTextColor="#ccc"
             onChangeText={props.onChangeText}
             autoCorrect={false}
           />
@@ -89,10 +88,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   inputContainer: {
+    justifyContent: "space-between",
     alignItems: "center",
-    borderColor: "#2c2c42",
+    borderColor: "#ccc",
     borderRadius: 8,
-    borderWidth: 1,
+    borderWidth: 0.3,
     flexDirection: "row",
     height: 60,
     paddingHorizontal: 10,

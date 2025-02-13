@@ -84,7 +84,7 @@ const SignUp = (): JSX.Element => {
             <View className="flex-row gap-5 justify-start w-full  mb-5">
               <IconButton
                 name="arrow-back-outline"
-                className="mb-5"
+                className=" mb-5"
                 onPress={() => {
                   router.back();
                 }}
@@ -100,7 +100,7 @@ const SignUp = (): JSX.Element => {
                 value={form.email || ""}
                 placeholder="Enter your Email"
                 labelClassName="text-black dark:text-white mb-3 text-[12px]"
-                inputClassName="text-black dark:text-white"
+                inputClassName="text-black dark:text-white  text-sm"
                 changeText={(e: string) => {
                   setForm({
                     ...form,
@@ -114,7 +114,7 @@ const SignUp = (): JSX.Element => {
                 value={form.username || ""}
                 placeholder="Enter your Username"
                 labelClassName="text-black dark:text-white mb-3 text-[12px]"
-                inputClassName="text-black dark:text-white"
+                inputClassName="text-black dark:text-white  text-sm"
                 changeText={(e: string) => {
                   setForm({
                     ...form,
