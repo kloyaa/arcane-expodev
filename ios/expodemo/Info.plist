@@ -28,13 +28,13 @@
         <key>CFBundleURLSchemes</key>
         <array>
           <string>expodemo</string>
-          <string>com.haibeonline.app</string>
+          <string>com.haibeonline.mccb</string>
         </array>
       </dict>
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>com.googleusercontent.apps.49722632182-hdd7ilsvdma4ualvu65eti8aeks511kr</string>
+          <string>com.googleusercontent.apps.49722632182-gag9sdplhac9kujp5uf1kmsmh3tp5dqt</string>
         </array>
       </dict>
     </array>
@@ -51,6 +51,11 @@
       <key>NSAllowsLocalNetworking</key>
       <true/>
     </dict>
+    <key>UIBackgroundModes</key>
+    <array>
+      <string>fetch</string>
+      <string>processing</string>
+    </array>
     <key>UILaunchStoryboardName</key>
     <string>SplashScreen</string>
     <key>UIRequiredDeviceCapabilities</key>

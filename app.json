@@ -17,8 +17,8 @@
     },
     "ios": {
       "supportsTablet": true,
-      "googleServicesFile": "./config/GoogleService-Info (2).plist",
-      "bundleIdentifier": "com.haibeonline.app"
+      "googleServicesFile": "./config/GoogleService-Info.plist",
+      "bundleIdentifier": "com.haibeonline.mccb"
     },
     "android": {
       "googleServicesFile": "./config/google-services.json",
