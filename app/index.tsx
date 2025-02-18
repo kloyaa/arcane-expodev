@@ -48,7 +48,7 @@ export default function App(): JSX.Element {
               containerStyles={styles.customButtonSignInContainerStyles}
               textClassName="text-black dark:text-orange-50"
               handlePress={() => {
-                router.push("/sign-in");
+                router.push("/firebase-pushnotification");
               }}
             />
             <CustomButton
