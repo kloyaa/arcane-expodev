@@ -3,6 +3,7 @@ import OTPInput from "@/components/otp";
 import useAuthStore from "@/store/auth.store";
 import SafeArea from "@/components/safearea";
 import { View } from "react-native";
+import { router } from "expo-router";
 
 const otp = () => {
   const { clearCredenials, registration } = useAuthStore();
@@ -15,6 +16,9 @@ const otp = () => {
 
       // Clear credentials if enrollment is successful
       clearCredenials();
+
+      router.push("/sign-in");
+
     } catch (error) {
       console.log(error);
     }

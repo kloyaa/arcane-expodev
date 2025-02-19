@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://10.0.2.2:3432/api"; // Change for real devices
+const BASE_URL = "http://192.168.68.121:3432/api"; // Change for real devices
 
 // Create Axios instance with default headers
 const apiClient = axios.create({

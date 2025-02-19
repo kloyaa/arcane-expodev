@@ -1,6 +1,5 @@
 import { ScrollView, StyleSheet, TextInput, View } from "react-native";
 import React, { forwardRef, useEffect, useRef, useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "@/components/custom-buttom";
 import {
   CustomObscuredInputProps,

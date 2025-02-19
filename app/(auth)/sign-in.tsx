@@ -85,6 +85,7 @@ const SignIn = (): JSX.Element => {
                 placeholder="Enter your password"
                 labelClassName="text-black dark:text-white mb-3 text-[12px]"
                 inputClassName="text-black dark:text-white text-sm"
+                allowToggle
                 onChangeText={(e) => {
                   setForm({
                     ...form,
